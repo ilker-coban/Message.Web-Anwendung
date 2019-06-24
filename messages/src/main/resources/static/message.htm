@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Nachrichten</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="message.css">
+		<link rel="stylesheet" href="/scripts/jquery.powertip.css">
+		<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+        <script src="scripts/jquery-latest.js"></script>
+        <script src="scripts/jquery.powertip.js"></script>
+        <script src="scripts/myscript.js"></script>
+	</head>
+	<body>
+        <script>
+            window.navigator.geolocation.getCurrentPosition(geolocationSuccess);
+        
+            function geolocationSuccess(position) {
+                var coords = position.coords;
+                var latlng = new google.maps.LatLng(coords.latitude,coords.longitude);
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'latLng': latlng }, addressSuccess);
+            }
+            function addressSuccess(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var address=results[0].address_components;
+                    var city;
+                    for(var i=0; i<address.length; ++i){
+                        if(address[i].types[0]=="locality"){
+                            city = address[i].long_name;
+                        }
+                    }
+                    console.log(city);
+                    ort.value=city;
+                }
+            }
+        </script>
+       <div class="row">
+           <div class="column">
+               <nav id="navbar">
+				    <ul>
+					    <li><a href="index.html">Home</a></li>
+					    <li><a href="login.html">Anmelden</a></li>
+					    <li><a href="register.html">Registrieren</a></li>
+					    <li><a href="#">Nachricht</a></li>
+				    </ul>
+              </nav>
+           </div>
+           <div class="column2">
+               <h3>Nachricht schreiben</h3>
+               <form action="/action_page.php" method="post">
+                   <textarea rows="10" title="Hier Text eingeben" id="textfeld"></textarea>
+                   <input class="container" type="submit" value="Senden" title="Text abschicken" id="btnSenden">
+                   <input type="text" id="ort" title="Ihr Standort" readonly>
+                   <input type="text" id="zaehler" title="Anzahl der eingegebenen Worte" readonly>
+               </form>
+           </div>
+       </div>
+	</body>
+</html>

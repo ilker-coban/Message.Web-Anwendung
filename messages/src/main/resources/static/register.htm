@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="register.css">
+		<title>Registrierung</title>
+	</head>
+	<body>
+       <div class="row">
+           <div class="column">
+			<nav id="navbar">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="login.html">Anmelden</a></li>
+					<li><a href="#">Registrieren</a></li>
+					<li><a href="message.html">Nachricht</a></li>
+				</ul>
+		    </nav>
+           </div>
+           <div class="column2">
+        <h3>Registrierung</h3>
+        <form action="/action_page.php" method="post">
+        <article>
+            <section class="pdd"><label for="name">Name:</label></section>
+            <section class="pdd"><input type="text" name="name" placeholder="Name eingeben" required></section>
+            <section class="pdd"><label for="username">Username:</label></section>
+            <section class="pdd"><input type="text" name="username" placeholder="Nutzername eingeben" required></section>
+            <section class="pdd"><label for="email">Email:</label></section>
+            <section class="pdd"><input type="email" name="email" required placeholder="Email eingeben"></section>
+            <section class="pdd"><label for="passwort">Passwort:</label></section>
+            <section class="pdd"><input type="password" name="passwort" placeholder="Passwort eingeben" required></section>
+            <section><input class="container" type="submit" name="btnSbmt" value="Abschicken"></section>
+        </article>
+        </form>
+           </div>
+       </div>
+	</body>
+</html>
